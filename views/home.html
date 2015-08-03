@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block head %}
+	{% parent %}
+{% endblock %}
+
+{% block content %}
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7 logo">
+					<div>
+						<h1>ChelaJS</h1>
+						<p>Un grupo developers se reúnen a tomar javascript con el pretexto de hablar del mejor lenguaje hoy en día: cerveza.</p>
+					</div>
+					<img id="home_logo" src="/img/logo.png" alt="Chela JS">
+				</div>
+				<div class="col-md-5 next-event">
+					<div class="next-event-info">
+						<h2>Eventos de ChelaJS</h2>
+						<p>Nos reunimos cada primer miercoles de mes a las 7:30 pm. Nos vemos, platicamos un rato y nos conocemos un poco mas los fanaticos de la cerveza y el javascript. Antes de empezar con las pláticas a las 8:00.</p>
+						<div>San Luis Potosí 196, Oficina 401, Roma Norte, México City.</div>
+						<p>Para información de siguientes eventos</p>
+						<p><a href="http://www.meetup.com/ChelaJS/" class="btn btn-primary btn-lg">Visita nuestro meetup</a><p>
+						
+						<h2>Platicas ChelaJS</h2>
+						<p>Las platicas de cada chelajs son dadas por los miembros de la comunidad. Crea un issue aqui:</p>
+						<a href="https://github.com/javascriptmx/chelajs/issues" class="btn btn-primary btn-lg">Dar platica</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="sponsor-home-container col-md-2 col-md-offset-3">
+					<div class="sponsor-home">
+						<a href="http://centraal.com">
+							<img src="/img/logo-nearsoft.png"  style="max-width: 70%">
+						</a>
+					</div>
+				</div>
+				<div class="sponsor-home-container col-md-2">
+					<div class="sponsor-home">
+						<a href="http://next-cloud.mx/cf/main.cfm">
+							<img src="/img/next-cloud-logo-horizontal-209x52.png"  style="max-width: 100%">
+						</a>
+					</div>						
+				</div>
+				<div class="sponsor-home-container col-md-2">
+					<div class="sponsor-home">
+						<a href="https://www.conekta.io/es/">
+							<img src="/img/logo-codea.png"  style="max-width: 100%">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
