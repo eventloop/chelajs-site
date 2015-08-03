@@ -1,5 +1,6 @@
-var express = require('express.io'),
-	swig = require('swig');
+var express = require('express'),
+	swig = require('swig'),
+	morgan = require('morgan');
 
 var server = express();
 
@@ -16,7 +17,8 @@ server.set('view cache', true);
 
 server.use(express.static('./public'));
 
-server.use(express.logger());
+var logger = morgan('combined')
+server.use( morgan('combined') )
 
 server.get('/', function (req, res) {
 	res.render('home',{
