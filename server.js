@@ -23,8 +23,11 @@ server.use( morgan('combined') )
 server.get('/', function (req, res) {
 	res.render('home',{
 		home  : true,
-	});	
+	});
 });
 
-server.listen(process.env.PORT || 3000);
+var port = process.env.PORT || 3000;
+server.listen(port, function(){
+	console.log("Listening on http://localhost:"+port);
+});
 console.log('Server booted at', new Date() );

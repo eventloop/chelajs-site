@@ -6,10 +6,10 @@
 
 	<title>ChelaJs {% block title %}{% endblock %}</title>
 
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/css/main.css">
+	<link href='//fonts.googleapis.com/css?family=Muli:300,300italic,400|Ropa+Sans:400' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="/css/shared.css" />
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	{% block head %}
 	{% endblock %}
@@ -56,7 +56,7 @@
 			$item.attr('href', $item.attr('href') + '?redirect-to=' + window.location.pathname )
 		});
 	});
-	</script>	
+	</script>
 	{% block js %}{% endblock %}
 </body>
 </html>

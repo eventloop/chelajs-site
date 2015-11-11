@@ -1,0 +1,36 @@
+@import 'variables';
+
+.evento {
+
+	.datetime {
+		float: left;
+		text-align: right;
+		width: 30%;
+		font-family: $f-titles;
+		text-transform: uppercase;
+		padding-right: .5em;
+		border-right: 1px solid #ddd;
+		margin-right: .5em;
+
+		p {
+			margin: 0;
+			font-size: .8em;
+			color: #666;
+		}
+
+		h2 {
+			margin: 0;
+			padding: 0;
+			color: $c-highlight;
+			font-size: 3em;
+		}
+	}
+
+	.info {
+
+	}
+}
+
+section {
+	margin: 2em 0;
+}
