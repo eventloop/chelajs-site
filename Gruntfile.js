@@ -22,4 +22,23 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch')
 
   grunt.registerTask('styles', ['stylus:dev', 'watch'])
+
+  grunt.option('path');
+  grunt.registerTask('ingest', 'Ingesta manualmente un evento', function(){
+    var Evento = require('./lib/evento'),
+        util = require('util'),
+        low = require('lowdb'),
+        db = low('db.json'),
+        fs = require('fs'),
+        Meethub = require('meethub');
+        var cfg = JSON.parse(fs.readFileSync('config.json'));
+        var mh = new Meethub(cfg, Evento);
+
+        var path = grunt.option('path');
+        var data = fs.readFileSync(path, 'utf8');
+        var evt = new Meethub.Event(Evento.unserialize(data));
+        evt.props.source = path;
+        db('events').push(evt.props);
+        db.saveSync('db.json');
+  });
 }

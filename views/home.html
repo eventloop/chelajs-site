@@ -33,22 +33,94 @@
 	</header>
 
 	<main>
+
+		{% if upcoming %}
 		<section id="proximo-evento">
 			<div class="evento cf">
 				<div class="datetime">
-					<p>Próximo evento</p>
-					<h2>02/Dic</h2>
-					<p>19:30 @ Mercado Libre</p>
+					<h2 class="date">{{ upcoming.string_date }}</h2>
+					<p class="time-venue">{{ upcoming.string_time }} @ <a href="{{ upcoming.venue.url }}">{{ upcoming.venue.name }}</a></p>
+					<a href="https://www.meetup.com/ChelaJS/events/{{ event.meetup_id }}/" class="btn btn-primary btn-block">Regístrate</a>
 				</div>
 				<div class="info">
-					<p>asdf</p>
+					<h3>{{ upcoming.name }}</h3>
+					<ol class="talks">
+						{% for talk in upcoming.talks %}
+						<li class="talk">
+							<div class="header">
+								<p class="speaker">
+									<span class="pic">
+										<img src="{{talk.speaker.pic}}" />
+									</span>
+									<a href="{{ talk.speaker.url }}" class="name">{{talk.speaker.name}}</a>
+								</p>
+								<h4>{{ talk.title }}</h4>
+								<p class="summary">{{ talk.summary }}</p>
+							</div>
+						</li>
+						{% endfor %}
+					</ol>
 				</div>
 			</div>
 		</section>
+		{% endif %}
+
+		{% if previous %}
+		<section id="eventos-anteriores">
+			<h2>Eventos anteriores</h2>
+			{% for evt in previous %}
+			<article class="evento cf">
+				<div class="header">
+					<h2 class="date-title">
+						<span class="date">{{ evt.string_date }}</span>
+						<span class="title">{{ evt.name }}</span>
+					</h2>
+					<p class="time-venue">{{ evt.string_time }} @ <a href="{{ evt.venue.url }}">{{ evt.venue.name }}</a></p>
+					<a href="https://www.meetup.com/ChelaJS/events/{{ event.meetup_id }}/" class="">Meetup</a>
+				</div>
+				<div class="info">
+					<ol class="talks">
+						{% for talk in evt.talks %}
+						<li class="talk">
+							<p class="speaker">
+								<span class="pic">
+									<img src="{{talk.speaker.pic}}" />
+								</span>
+								<span class="title">{{ talk.title }}</span>
+								<a href="{{ talk.speaker.url }}" class="name">{{talk.speaker.name}}</a>
+							</p>
+							<p class="summary">{{ talk.summary }}</p>
+						</li>
+						{% endfor %}
+					</ol>
+				</div>
+			</article>
+			{% endfor %}
+		</section>
+		{% endif %}
 
 		<section id="speakers">
 			<a name="speakers"></a>
-			<h2>Platica en ChelaJS</h2>
+			<h2>Platícanos sobre Javascript</h2>
+
+			<p>¿Te interesa proponer o adoptar una plática? Nuestro proceso de selección de pláticas es muy sencillo, y consta de tres pasos:</p>
+
+			<ol>
+				<li><a href="https://github.com/javascriptmx/chelajs/wiki#1-hola-idea">Tú formulas</a> o <a href="https://github.com/javascriptmx/chelajs/issues?q=is%3Aopen+is%3Aissue+label%3A%22se+busca+ponente%22">adoptas</a> una idea,</li>
+				<li>La compartes en los issues,</li>
+				<li>Para finalmente revisarla en conjunto.</li>
+			</ol>
+
+			<div class="row">
+				<div class="col-md-6 col-md-offset-4">
+					<a href="https://github.com/javascriptmx/chelajs/issues" class="btn btn-primary btn-lg btn-block">Propón una plática</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<p class="text-muted">No necesitas ser una experta en dar pláticas, tenemos una guía para preparar tu charla en <a href="https://github.com/javascriptmx/chelajs/wiki">el wiki</a>.</p>
+			</div>
+
 		</section>
 
 		<section id="sponsors">

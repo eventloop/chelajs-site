@@ -8,8 +8,12 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.2",
+    "lowdb": "^0.10.2",
+    "marked": "^0.3.5",
+    "meethub": "0.0.1",
     "morgan": "^1.6.1",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "yamljs": "^0.2.4"
   },
   "scripts": {
     "start": "node server.js"
