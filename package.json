@@ -1,6 +1,6 @@
 {
   "name": "chelajs",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "domains": [
     "chelajs.com",
     "www.chelajs.com"
@@ -28,6 +28,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Siedrix/chelajs.git"
+    "url": "https://github.com/javascriptmx/chelajs.git"
   }
 }
