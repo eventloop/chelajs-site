@@ -11,7 +11,7 @@
 	<header>
 		<div id="intro">
 			<p><a href="http://javascriptmx.com">javascriptmx</a></p>
-			<p class="heading-emphasis"><span class="heading-emphasis">presenta</span></p>
+			<p class="heading-emphasis"><span>presenta</span></p>
 			<h1>ChelaJS</h1>
 			<p class="byline">Nos reunimos a tomar javascript con el pretexto de hablar del mejor lenguaje hoy en día: cerveza.</p>
 		</div>
@@ -21,8 +21,8 @@
 				<a href="#proximo-evento">eventos</a>
 				<a href="/patrocinadores">patrocinadores</a>
 			</div>
-			<div class="center">
-				<img src="/img/logo-small.png" />
+			<div class="logo">
+				<img src="/img/logo.svg" />
 			</div>
 			<div class="right">
 				<a href="https://twitter.com/chela_js">twitter</a>
@@ -33,59 +33,77 @@
 	</header>
 
 	<main>
+		<section id="main-event">
+			<p class="heading-emphasis">
+				<span>{% if upcoming %}
+				próximo evento
+				{% else %}
+				último evento
+				{% endif %}</span>
 
-		{% if upcoming %}
-		<section id="proximo-evento">
-			<div class="evento cf">
-				<div class="datetime">
-					<h2 class="date">{{ upcoming.string_date }}</h2>
-					<p class="time-venue">{{ upcoming.string_time }} @ <a href="{{ upcoming.venue.url }}">{{ upcoming.venue.name }}</a></p>
-					<a href="https://www.meetup.com/ChelaJS/events/{{ event.meetup_id }}/" class="btn btn-primary btn-block">Regístrate</a>
+			</p>
+			<article class="evento cf">
+				<div class="header">
+					<h2 class="date-title">
+						<span class="date">{{ main_event.string_date }}</span>
+						<span class="title">{{ main_event.name }}</span>
+					</h2>
+					<p class="time-venue">
+						{{ main_event.string_time }} @
+						<a href="{{ main_event.venue.url }}">
+							{{ main_event.venue.name }}
+						</a>
+					</p>
+					<a href="https://www.meetup.com/ChelaJS/events/{{ main_event.meetup_id }}/" class="btn btn-primary btn-block">{% if upcoming %}
+						Regístrate
+						{% else %}
+						Ve el Meetup
+						{% endif %}</a>
 				</div>
 				<div class="info">
-					<h3>{{ upcoming.name }}</h3>
 					<ol class="talks">
-						{% for talk in upcoming.talks %}
+						{% for talk in main_event.talks %}
 						<li class="talk">
-							<div class="header">
-								<p class="speaker">
-									<span class="pic">
-										<img src="{{talk.speaker.pic}}" />
-									</span>
-									<a href="{{ talk.speaker.url }}" class="name">{{talk.speaker.name}}</a>
-								</p>
-								<h4>{{ talk.title }}</h4>
-								<p class="summary">{{ talk.summary }}</p>
-							</div>
+							<p class="speaker">
+								{% if talk.speaker.pic %}
+								<span class="pic">
+									<img src="{{talk.speaker.pic}}" />
+								</span>
+								{% endif %}
+								<span class="title">{{ talk.title }}</span>
+								<a href="{{ talk.speaker.url }}" class="name">{{talk.speaker.name}}</a>
+							</p>
+							<p class="summary">{{ talk.summary }}</p>
 						</li>
 						{% endfor %}
 					</ol>
 				</div>
-			</div>
+			</article>
 		</section>
-		{% endif %}
 
-		{% if previous %}
+		{#% if previous %}
 		<section id="eventos-anteriores">
-			<h2>Eventos anteriores</h2>
+			<h2>Evento anterior</h2>
 			{% for evt in previous %}
 			<article class="evento cf">
 				<div class="header">
 					<h2 class="date-title">
 						<span class="date">{{ evt.string_date }}</span>
-						<span class="title">{{ evt.name }}</span>
+
 					</h2>
 					<p class="time-venue">{{ evt.string_time }} @ <a href="{{ evt.venue.url }}">{{ evt.venue.name }}</a></p>
-					<a href="https://www.meetup.com/ChelaJS/events/{{ event.meetup_id }}/" class="">Meetup</a>
+					<a href="https://www.meetup.com/ChelaJS/events/{{ evt.meetup_id }}/" class="">Meetup</a>
 				</div>
 				<div class="info">
 					<ol class="talks">
 						{% for talk in evt.talks %}
 						<li class="talk">
 							<p class="speaker">
+								{% if talk.speaker.pic %}
 								<span class="pic">
 									<img src="{{talk.speaker.pic}}" />
 								</span>
+								{% endif %}
 								<span class="title">{{ talk.title }}</span>
 								<a href="{{ talk.speaker.url }}" class="name">{{talk.speaker.name}}</a>
 							</p>
@@ -97,7 +115,7 @@
 			</article>
 			{% endfor %}
 		</section>
-		{% endif %}
+		{% endif %#}
 
 		<section id="speakers">
 			<a name="speakers"></a>

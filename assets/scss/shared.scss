@@ -13,7 +13,7 @@ h1, h2, h3, h4 {
 	line-height: 0.5;
 	text-align: center;
 
-	& span {
+	span {
 		display: inline-block;
 		position: relative;
 
@@ -21,7 +21,7 @@ h1, h2, h3, h4 {
 			border-top: 1px solid $c-highlight;
 			content: "";
 			position: absolute;
-			top: .3em;
+			top: 50%;
 			width: 190%;
 		}
 
@@ -125,9 +125,12 @@ main, footer {
 		margin-top: -1.5em;
 	}
 
-	.center {
+	.logo {
 		width: 120px;
 		height: 1em;
+		img {
+			width: 100%;
+		}
 	}
 
 	.right, .left {

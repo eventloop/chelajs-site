@@ -51,36 +51,27 @@ server.use( morgan('combined') );
 server.get('/', function (req, res) {
 
   var now = new Date();
-  var upcoming = [];
-  var previous = [];
-  var events = db('events')
+  var event = Evento.decorate(
+    db('events')
     .chain()
-    .sortBy('time')
-    .take(5)
-    .value()
-    .forEach(function (e) {
-      e = Evento.decorate(e);
-      if (now <= e.ends) {
-        upcoming.push(e);
-      } else {
-        previous.push(e);
-      }
-    });
+    .sortBy('starts')
+    .reverse()
+    .take(1)
+    .value()[0]);
 
   res.render('home',{
     home  : true,
-    upcoming: upcoming.pop(),
-    previous: previous
+    upcoming: now < event.ends,
+    main_event: event
   });
 });
 
 server.get('/events', function (req, res) {
-
   res.json(db('events').chain()
-    .sortBy('time')
+    .sortBy('starts')
+    .reverse()
     .take(5)
-    .value());
-
+    .value().map(Evento.decorate));
 });
 
 
