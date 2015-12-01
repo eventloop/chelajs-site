@@ -73,7 +73,13 @@
 								<span class="title">{{ talk.title }}</span>
 								<a href="{{ talk.speaker.url }}" class="name">{{talk.speaker.name}}</a>
 							</p>
+							{% if talk.summary.html %}
+							<div class="summary">
+								{% autoescape false %}{{ talk.summary.html }}{% endautoescape %}
+							</div>
+							{% else %}
 							<p class="summary">{{ talk.summary }}</p>
+							{% endif %}
 						</li>
 						{% endfor %}
 					</ol>
