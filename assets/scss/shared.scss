@@ -1,0 +1,145 @@
+@import 'variables';
+
+body {
+	font-size: 18px;
+	font-family: $f-text;
+}
+
+h1, h2, h3, h4 {
+	font-family: $f-titles;
+}
+
+.heading-emphasis {
+	line-height: 0.5;
+	text-align: center;
+
+	span {
+		display: inline-block;
+		position: relative;
+
+		&:before, &:after {
+			border-top: 1px solid $c-highlight;
+			content: "";
+			position: absolute;
+			top: 50%;
+			width: 190%;
+		}
+
+		&:before {
+			right: 100%;
+			margin-right: 15px;
+		}
+		&:after {
+			left: 100%;
+			margin-left: 15px;
+		}
+	}
+}
+
+header {
+	text-align: center;
+	background-color: #343434;
+	background:
+		linear-gradient(
+			rgba(52,52,52,.7)  0%,
+			rgba(52,52,52,.7)  55%,
+			rgba(52,52,52,.95) 70%
+		),
+		url(/img/talk.jpg) no-repeat center
+	;
+	color: $c-highlight;
+	padding: 1em 0;
+	margin-bottom: 3em;
+
+	#intro {
+		max-width: 400px;
+		margin: 0 auto;
+	}
+
+	h1 {
+		text-transform: uppercase;
+		font-size: 4em;
+		letter-spacing: .1em;
+		padding: 0;
+		margin: 0;
+		margin-bottom: .2em;
+	}
+
+	p {
+		font-style: italic;
+		font-size: 1.33333em;
+		line-height: 1.25em;
+
+		& > a {
+			text-decoration: none;
+			color: $c-highlight;
+		}
+
+		span {
+			display: block;
+			line-height: 1.25em;
+		}
+
+		&.byline {
+			border-top: 1px solid $c-highlight;
+			padding-top: 1em;
+			max-width: 300px;
+			margin: 0 auto;
+			font-weight: 300;
+			font-size: 1em;
+		}
+	}
+}
+
+.btn {
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	font-family: $f-titles;
+}
+
+main, footer {
+	max-width: 700px;
+	margin: 1em auto;
+}
+
+#main-nav {
+	text-align: center;
+	max-width: 700px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	margin-top: 1.6em;
+
+
+	a {
+		display: inline-block;
+		padding: 0 15px;
+		color: #eee;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	img {
+		margin-top: -1.5em;
+	}
+
+	.logo {
+		width: 120px;
+		height: 1em;
+		img {
+			width: 100%;
+		}
+	}
+
+	.right, .left {
+		display: flex;
+		justify-content: flex-start;
+		width: 240px;
+	}
+
+	.left {
+		justify-content: flex-end;
+	}
+}

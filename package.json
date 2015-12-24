@@ -1,15 +1,20 @@
 {
   "name": "chelajs",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "domains": [
     "chelajs.com",
     "www.chelajs.com"
   ],
   "main": "server.js",
   "dependencies": {
+    "core-util-is": "^1.0.1",
     "express": "^4.13.2",
+    "lowdb": "^0.10.2",
+    "marked": "^0.3.5",
+    "meethub": "0.0.1",
     "morgan": "^1.6.1",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "yamljs": "^0.2.4"
   },
   "scripts": {
     "start": "node server.js"
@@ -20,10 +25,11 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-stylus": "^0.17",
-    "grunt-contrib-watch": "~0.6"
+    "grunt-contrib-watch": "~0.6",
+    "lodash": "^3.10.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Siedrix/chelajs.git"
+    "url": "https://github.com/javascriptmx/chelajs.git"
   }
 }

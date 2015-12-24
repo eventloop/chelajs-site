@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>guestlist-chelajs-2015-11-03</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Muli:300,300italic,400|Ropa+Sans:400' rel='stylesheet' type='text/css' />
+
+
+	<style>
+		@import '../public/css/shared.css';
+
+		body {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			color: #333;
+		}
+
+		main {
+			max-width: 7.5in;
+			box-sizing: border-box;
+			margin: 0 auto;
+		}
+
+		@page {
+			size: 8.5in 11in margin: .5in;
+		}
+
+		header {
+			background: none;
+			text-align: left;
+		}
+
+		header h1 {
+			font-size: 2.5vw;
+			color: #333;
+		}
+
+		header img {
+			max-width: 30px;
+		}
+
+
+		table {
+			position: relative;
+			padding-bottom: 2em;
+		}
+
+		caption, th {
+			font-size: 1.5vw;
+			font-family:Interstate,DINAlternate-Bold,"Ropa Sans",sans-serif;
+			text-transform: uppercase;
+		}
+
+		caption {
+			text-align: left;
+			margin-bottom: .5em;
+			color: #666;
+		}
+
+		th {
+			text-align: center;
+			display: block;
+			position: absolute;
+			width: 1em;
+			left: -1.5em;
+			color: #ccc;
+		}
+
+		.separator {
+			display: block;
+			margin-top: 1em;
+		}
+
+		.separator:first-child {
+			margin-top: 0;
+		}
+
+		tr:not(.separator) td {
+			padding-bottom: .2em;
+		}
+
+		.last-name {
+			text-transform: uppercase;
+		}
+
+		#asistentes {
+			float: left;
+			width: 50%;
+			left: 2em;
+		}
+
+		aside {
+			float: left;
+			width: 50%;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1><img src="../public/img/logo.png" alt="Chela JS"> {{ name }}</h1>
+		</header>
+
+		<table id="asistentes">
+			<caption>Asistentes</caption>
+			<tbody>
+				{% for section, guests in guests %}
+				<tr class="separator">
+					<th scope="colgroup">{{ section }}</th>
+				</tr>
+				{% for guest in guests %}
+				<tr>
+					<td>{{guest.name.first}} <span class="last-name">{{guest.name.last}}</span></td>
+				</tr>
+				{% endfor %}
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<aside>
+			<table id="organizadores">
+				<caption>Organizadores</caption>
+				<tbody>
+					{% for host in hosts %}
+					<tr>
+						<td>{{host.name.first}} <span class="last-name">{{host.name.last}}</span></td>
+					</tr>
+					{% endfor %}
+
+					{% for speaker in speakers %}
+					<tr>
+						<td>{{speaker.name.first}} <span class="last-name">{{speaker.name.last}}</span></td>
+					</tr>
+					{% endfor %}
+
+					{% for fellow in fellows %}
+					<tr>
+						<td>{{fellow.name.first}} <span class="last-name">{{fellow.name.last}}</span></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<table id="waitlist">
+				<caption>En espera</caption>
+				<tbody>
+					{% for guest in waitlist %}
+					<tr>
+						<td>{{guest.name.first}} <span class="last-name">{{guest.name.last}}</span></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</aside>
+	</main>
+</body>
+</html>
