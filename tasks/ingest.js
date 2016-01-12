@@ -2,7 +2,7 @@ var grunt = require('grunt');
 grunt.option('path');
 
 grunt.registerTask('ingest', 'Ingesta manualmente un evento', function() {
-  var Evento = require('./lib/evento'),
+  var Evento = require(process.env.PWD+'/lib/evento.js'),
       low = require('lowdb'),
       db = low('db.json'),
       fs = require('fs'),
