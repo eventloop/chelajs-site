@@ -14,7 +14,7 @@
     "meethub": "0.0.1",
     "morgan": "^1.6.1",
     "swig": "^1.4.2",
-    "yamljs": "^0.2.4"
+    "js-yaml": "^3.4.2"
   },
   "scripts": {
     "start": "node server.js"
