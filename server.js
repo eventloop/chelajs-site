@@ -13,6 +13,7 @@ var cfg = JSON.parse(fs.readFileSync('config.json'));
 
 
 var mh = new Meethub(cfg, Evento);
+var rsvp_daemon = require('./lib/rsvp_daemon')(mh.meetup);
 
 // View engine
 swig.setDefaults({
@@ -27,6 +28,9 @@ server.set('views', __dirname + '/views');
 server.set('view cache', true);
 
 server.use(express.static('./public'));
+var logger = morgan('combined');
+server.use( morgan('combined') );
+
 server.use('/meethub', mh.handler);
 
 
@@ -35,6 +39,7 @@ mh.on('created', function(event){
   e.source = e.url();
   db('events').push(e);
   db.saveSync('db.json');
+  rsvp_daemon.start(event);
 });
 
 mh.on('updated', function(event){
@@ -45,8 +50,25 @@ mh.on('updated', function(event){
     .assign(event.props);
 });
 
-var logger = morgan('combined');
-server.use( morgan('combined') );
+rsvp_daemon.on('rsvp', function rsvp (data) {
+  var record = db('rsvp')
+    .chain()
+    .find({id: data.event.meetup_id});
+  var defaults = record.value();
+  record.assign(RSVPDaemon.parse(data, defaults));
+});
+
+rsvp_daemon.on('ended', function event_ended (err, evt) {
+  var people = db('rsvp')
+    .chain()
+    .find({id: evt.meetup_id});
+
+  var stats = {
+    went: people.find({"status": "yes"})
+  };
+});
+
+
 
 server.get('/', function (req, res) {
 

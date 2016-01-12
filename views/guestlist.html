@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>guestlist-chelajs-2015-11-03</title>
+	<title>chelajs-{{ date }}</title>
 
 	<link href='http://fonts.googleapis.com/css?family=Muli:300,300italic,400|Ropa+Sans:400' rel='stylesheet' type='text/css' />
 
@@ -32,6 +32,7 @@
 		header {
 			background: none;
 			text-align: left;
+			margin-bottom: 0;
 		}
 
 		header h1 {
@@ -41,6 +42,8 @@
 
 		header img {
 			max-width: 30px;
+			margin-left: .5em;
+			-webkit-filter: grayscale(100%);
 		}
 
 
@@ -106,7 +109,7 @@
 		</header>
 
 		<table id="asistentes">
-			<caption>Asistentes</caption>
+			<caption>{{ total }} Asistentes</caption>
 			<tbody>
 				{% for section, guests in guests %}
 				<tr class="separator">
