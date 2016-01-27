@@ -1,0 +1,12 @@
+{
+	"asi": true,
+	"browser": false,
+	"white": false,
+	"nomen": false,
+	"undef": false,
+	"unused": false,
+	"plusplus": false,
+	"regexp": true,
+	"esnext": true,
+	"noyield": true
+}

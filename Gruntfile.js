@@ -1,27 +1,27 @@
 module.exports = function(grunt) {
+
+  require('load-grunt-tasks')(grunt);
+
   grunt.initConfig({
-    stylus: {
-      dev: {
-        files: {
-          'public/css/main.css': 'public/stylus/main.styl',
-          'public/css/admin.css': 'public/stylus/admin.styl',
-        }
-      }
-    },
-    watch: {
+    sass: {
+      dest: 'public/css/',
       options: {
-        livereload: true
-      },
-      stylus: {
-        files: ['public/stylus/**/*.styl'],
-        tasks: ['stylus:dev']
+        sourceMap: false
+      }
+    }
+    watch: {
+      css: {
+        files: 'assets/scss/**/*.scss',
+        tasks: ['sass'],
+        options: {
+          livereload: true
+        }
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadTasks('./tasks');
   grunt.loadTasks('./tasks/meetup');
 
-  grunt.registerTask('styles', ['stylus:dev', 'watch']);
+  grunt.registerTask('styles', ['watch']);
 };
