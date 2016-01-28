@@ -1,14 +1,23 @@
 module.exports = function(grunt) {
 
-  require('load-grunt-tasks')(grunt);
+  // require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     sass: {
-      dest: 'public/css/',
-      options: {
-        sourceMap: false
+      dist: {
+        options: {
+          sourcemap: 'none',
+          style: 'compressed'
+        },
+        files: [{
+          expand: true,
+          cwd: './assets/scss',
+          src: ['*.scss'],
+          dest: 'public/css',
+          ext: '.css'
+        }]
       }
-    }
+    },
     watch: {
       css: {
         files: 'assets/scss/**/*.scss',
@@ -19,9 +28,10 @@ module.exports = function(grunt) {
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadTasks('./tasks');
-  grunt.loadTasks('./tasks/meetup');
 
-  grunt.registerTask('styles', ['watch']);
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadTasks('./tasks')
+
+  grunt.registerTask('sass:watch', ['watch']);
 };

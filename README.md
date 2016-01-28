@@ -4,12 +4,18 @@
 
 ```
 npm install
-npm run seed
-npm run assets:compile
+# copiamos y editamos la configuración a nuestro gusto
+cp config.example.json config.json
+$EDITOR config.json
+
+# Bajamos los eventos del meetup para popular la db
+grunt db:seed
+# Compilamos estilos
+grunt sass
 ```
 
-Luego, podemos correr con `npm start`
+Luego, podemos iniciar con `npm start`
 
 ## Development
 
-`npm run assets:watch`
+`grunt sass:watch`
