@@ -3,8 +3,8 @@ var express = require('express'),
     debug = require('debug')('chelajs:server'),
     util = require('util'),
     low = require('lowdb'),
+    db = low('db.json', {storage: require('lowdb/file-sync')}),
     fs = require('fs'),
-    db = low('db.json'),
     cfg = require('./config.json');
 
 var server = express();
