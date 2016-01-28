@@ -1,0 +1,26 @@
+{
+	"meetup": {
+		"defaults": {
+			"name": "ChelaJS",
+			"group": {
+				"id": 41414141,
+				"name": "ChelaJS"
+			},
+			"spots": 100,
+			"hosts": [ 42424242, 43434343, 45454545 ],
+			"waitlist": true
+		},
+		"credentials": {
+			"key": "___MEETUP_KEY___"
+		}
+	},
+	"github": {
+		"hook": {
+			"path": "/github",
+			"secret": "___GITHUB_WEBHOOK_SECRET___"
+		},
+		"repo": "javascriptmx/chelajs",
+		"folder": "eventos",
+		"token": "___GITHUB_TOKEN___"
+	}
+}

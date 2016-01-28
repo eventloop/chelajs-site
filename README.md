@@ -1,26 +1,21 @@
-## Getting started
-Running ChelaJs repo
+# ChelaJS punto algo
 
-    npm install
+## Building
 
-## Starting the server
+```
+npm install
+# copiamos y editamos la configuración a nuestro gusto
+cp config.example.json config.json
+$EDITOR config.json
 
-ChelaJS requires the `NODE_PATH` variable to include the directory `./local_modules` e.g.
+# Bajamos los eventos del meetup para popular la db
+grunt db:seed
+# Compilamos estilos
+grunt sass
+```
 
-    node server.js
+Luego, podemos iniciar con `npm start`
 
-### Template
+## Development
 
-Swig.js is used for the template engine, check documentation [here](http://paularmstrong.github.io/swig/docs/).
-
-### Helping with the style
-
-For help with styles, stylus + nib
-
-	npm install stylus -g
-	npm install nib -g
-	npm install grunt -g
-
-Then run
-
-	grunt styles
+`grunt sass:watch`
