@@ -29,7 +29,7 @@
     "grunt-contrib-stylus": "^0.17",
     "grunt-contrib-watch": "~0.6",
     "grunt-sass": "^1.1.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.0.1",
     "request": "^2.69.0"
   },
   "repository": {
