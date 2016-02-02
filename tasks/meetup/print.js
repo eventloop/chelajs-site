@@ -14,7 +14,9 @@ grunt.registerTask(
     var Evento = require('../../lib/evento'),
         fs = require('fs'),
         low = require('lowdb'),
-        db = low('db.json'),
+        db = low('db.json', {
+          storage: require('lowdb/file-sync')
+        }),
         _ = require('lodash'),
         swig = require('swig'),
         Meethub = require('meethub');
@@ -31,7 +33,7 @@ grunt.registerTask(
 
     var base = "./tmp/"+last.meetup_id+"-rsvp.";
     var data = JSON.parse(fs.readFileSync(base+'json'));
-    var people = _.sortByAll(data.people, ['_role', 'name.last', 'name.first']);
+    var people = _.sortBy(data.people, ['_role', 'name.last', 'name.first']);
     var date = new Date(data.starts);
     var starts = [date.getFullYear(), date.getMonth(), date.getDate()].map(rpad).join('-');
     var guests = _.filter(people, function (g) { return g.override !== "hidden" && g._role === "guest"; });
