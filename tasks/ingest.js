@@ -95,9 +95,18 @@ grunt.registerTask('db:seed', 'Ingesta todos los eventos', function() {
         all.sort(function(a, b){
           return a.starts - b.starts
         })
-        all.forEach(function(i){
-          // console.log(i.name+ " "+ (new Date(i.starts)))
-          db('events').push(i)
+        all.forEach(function(evt){
+          if (db('events').find({source: evt.source})) {
+            console.log("MOD: "+evt.source)
+            db('events')
+              .chain()
+              .find({source: evt.source})
+              .assign(evt)
+              .value()
+          } else {
+            console.log("ADD: "+evt.source)
+            db('events').push(evt)
+          }
         })
       })
   }
