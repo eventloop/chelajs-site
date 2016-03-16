@@ -9,6 +9,7 @@
   "dependencies": {
     "core-util-is": "^1.0.1",
     "debug": "^2.2.0",
+    "diacritics": "^1.2.3",
     "express": "^4.13.2",
     "js-yaml": "^3.4.2",
     "lowdb": "^0.12.2",

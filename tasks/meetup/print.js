@@ -19,6 +19,7 @@ grunt.registerTask(
         }),
         _ = require('lodash'),
         swig = require('swig'),
+        removeDiacritics = require('diacritics').remove,
         Meethub = require('meethub');
 
     var cfg = JSON.parse(fs.readFileSync('config.json'));
@@ -42,7 +43,7 @@ grunt.registerTask(
       name: data.name,
       date: starts,
       guests: _.groupBy(_.filter(guests, {status: "yes"}), function (p) {
-        return p.name.last.charAt(0).toLocaleUpperCase();
+        return removeDiacritics(p.name.last.charAt(0)).toLocaleUpperCase();
       }),
       waitlist: _.filter(guests, {status: "waitlist"}),
       hosts: _.filter(people, {_role: 'host'}),
